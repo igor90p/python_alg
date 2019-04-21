@@ -129,7 +129,27 @@ else:
 
 print('=================Доп.задания=================')
 print('==================Задание-1==================')
-# не выполнил... Забыл как определить файл
+stats = {}
+with open("pwd.txt", "r") as f:
+    for line in f.read().split("\n"):
+        if len(line) == 0:
+            continue
+
+        login, password = line.split(";")
+
+        if password in stats:
+            stats[password] += 1
+        else:
+            stats[password] = 1
+
+# print(stats)
+
+
+sorted_x = sorted(stats.items(), key=lambda kv: kv[1], reverse=True)
+
+
+print(sorted_x[:10])
+
 print('==================Задание-2==================')
 
 secret = random.randint(1, 99)
